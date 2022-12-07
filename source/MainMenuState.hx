@@ -30,7 +30,7 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'Credits', 'options'];
 	#else
 	var optionShit:Array<String> = ['story mode', 'freeplay'];
 	#end
@@ -62,7 +62,7 @@ class MainMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBGayed'));
+		var bg:FlxSprite = new FlxSprite(-100).loadGraphic(Paths.image('menuBG'));
 		bg.scrollFactor.x = 0;
 		bg.scrollFactor.y = 0.10;
 		bg.setGraphicSize(Std.int(bg.width * 1.1));
@@ -138,6 +138,20 @@ class MainMenuState extends MusicBeatState
                 #end
 
 		super.create();
+		
+		switch(FlxG.random.int(1, 3))
+	{
+	               case 1:
+                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));//put your cords and image here
+                    char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');//here put the name of the xml
+                    char.animation.addByPrefix('idleN', 'idle', 15, true);//on 'idle normal' change it to your xml one
+                    char.animation.play('idleN');//you can rename the anim however you want to
+                    char.scrollFactor.set();
+                    FlxG.sound.play(Paths.sound('appear'), 2);
+                    char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
+                    char.antialiasing = ClientPrefs.globalAntialiasing;
+                    add(char);
+		}
 	}
 
 	var selectedSomethin:Bool = false;
@@ -235,8 +249,9 @@ class MainMenuState extends MusicBeatState
 				trace("Story Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
-
 				trace("Freeplay Menu Selected");
+			case 'Credits':
+			  FlxG.switchState(new CreditsState());
 
 			case 'options':
 				FlxG.switchState(new OptionsMenu());
