@@ -141,7 +141,6 @@ class MainMenuState extends MusicBeatState
 		super.create();
 		
 		swith(FlxG.random.int(1, 3));
-		{
       case 1:
           char = new FlxSprite(820, 170).loadGraphic(Paths.image('characters/ayed'));//put your cords and image here
           char.frames = Paths.getSparrowAtlas('charaters/ayed');//here put the name of the xml
@@ -152,7 +151,6 @@ class MainMenuState extends MusicBeatState
           char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
           char.antialiasing = ClientPrefs.globalAntialiasing;
           add(char);
-		}
 	}
 
 	var selectedSomethin:Bool = false;
