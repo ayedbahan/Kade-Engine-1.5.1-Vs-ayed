@@ -1,7 +1,5 @@
 package;
 
-
-
 import Controls.KeyboardScheme;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -14,9 +12,6 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
-#if newgrounds
-import io.newgrounds.NG;
-#end
 import lime.app.Application;
 
 #if windows
@@ -39,12 +34,11 @@ class MainMenuState extends MusicBeatState
 
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
-	var char:FlxSprite;
 	public static var firstStart:Bool = true;
 
 	public static var nightly:String = "";
 
-	public static var kadeEngineVer:String = "1.5.1" + nightly;
+	public static var kadeEngineVer:String = "1.5.0" + nightly;
 	public static var gameVer:String = "0.2.7.1";
 
 	var magenta:FlxSprite;
@@ -55,7 +49,7 @@ class MainMenuState extends MusicBeatState
 	{
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("he In the Menus", null);
+		DiscordClient.changePresence("In the Menus", null);
 		#end
 
 		if (!FlxG.sound.music.playing)
@@ -102,7 +96,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.x = 150;
+			menuItem.x = 200;
 			//menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			menuItem.scrollFactor.set();
@@ -121,7 +115,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Vs Ayed - " + kadeEngineVer + " ayed Engine" : ""), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Vs ayed - " + kadeEngineVer + " ayed Engine" : ""), 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -136,25 +130,11 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-                #if android
-                addVirtualPad(UP_DOWN, A_B);
-                #end
+		#if mobileC
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 
 		super.create();
-		
-		switch(FlxG.random.int(1, 3))
-	{
-           case 1:
-                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));//put your cords and image here
-                    char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');//here put the name of the xml
-                    char.animation.addByPrefix('idleN', 'idle', 15, true);//on 'idle normal' change it to your xml one
-                    char.animation.play('idleN');//you can rename the anim however you want to
-                    char.scrollFactor.set();
-                    FlxG.sound.play(Paths.sound('appear'), 2);
-                    char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
-                    char.antialiasing = ClientPrefs.globalAntialiasing;
-                    add(char);
-		}
 	}
 
 	var selectedSomethin:Bool = false;
@@ -252,7 +232,7 @@ class MainMenuState extends MusicBeatState
 				trace("Story Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
-				
+
 				trace("Freeplay Menu Selected");
 
 			case 'options':
