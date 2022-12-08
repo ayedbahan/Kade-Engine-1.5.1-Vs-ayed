@@ -140,7 +140,7 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 		
-		swith(FlxG.random.int(1, 3))
+		swith(FlxG.random.int(1, 3));
 		{
       case 1:
           char = new FlxSprite(820, 170).loadGraphic(Paths.image('characters/ayed'));//put your cords and image here
