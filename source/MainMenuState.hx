@@ -12,6 +12,9 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+#if newgrounds
+import io.newgrounds.NG;
+#end
 import lime.app.Application;
 
 #if windows
@@ -43,13 +46,14 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
+	var char:FlxSprite;
 	public static var finishedFunnyMove:Bool = false;
 
 	override function create()
 	{
 		#if windows
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("he In the Menus", null);
 		#end
 
 		if (!FlxG.sound.music.playing)
@@ -115,7 +119,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.follow(camFollow, null, 0.60 * (60 / FlxG.save.data.fpsCap));
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Vs ayed - " + kadeEngineVer + " ayed Engine" : ""), 12);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, gameVer +  (Main.watermarks ? " Vs ayed - " + kadeEngineVer + " ayed Engine" : ""), 14);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -130,11 +134,25 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-		#if mobileC
-		addVirtualPad(UP_DOWN, A_B);
-		#end
+                #if android
+                addVirtualPad(UP_DOWN, A_B);
+                #end
 
 		super.create();
+		
+		swith(FlxG.random.int(1, 3))
+		{
+      case 1:
+          char = new FlxSprite(820, 170).loadGraphic(Paths.image('character/ayed'));//put your cords and image here
+          char.frames = Paths.getSparrowAtlas('charater/ayed');//here put the name of the xml
+          char.animation.addByPrefix('idleD', 'ayed idle', 16, true);//on 'idle normal' change it to your xml one
+          char.animation.play('idleE');//you can rename the anim however you want to
+          char.scrollFactor.set();
+          FlxG.sound.play(Paths.sound('appear'), 2);
+          char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
+          char.antialiasing = ClientPrefs.globalAntialiasing;
+          add(char);
+		}
 	}
 
 	var selectedSomethin:Bool = false;
