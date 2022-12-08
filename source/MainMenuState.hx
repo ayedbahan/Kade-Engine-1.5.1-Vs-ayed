@@ -46,7 +46,6 @@ class MainMenuState extends MusicBeatState
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
-	var char:FlxSprite;
 	public static var finishedFunnyMove:Bool = false;
 
 	override function create()
@@ -139,18 +138,6 @@ class MainMenuState extends MusicBeatState
                 #end
 
 		super.create();
-		
-		swith(FlxG.random.int(1, 3));
-      case 1:
-          char = new FlxSprite(820, 170).loadGraphic(Paths.image('characters/ayed'));//put your cords and image here
-          char.frames = Paths.getSparrowAtlas('charaters/ayed');//here put the name of the xml
-          char.animation.addByPrefix('idleD', 'ayed idle', 16, true);//on 'idle normal' change it to your xml one
-          char.animation.play('idleE');//you can rename the anim however you want to
-          char.scrollFactor.set();
-          FlxG.sound.play(Paths.sound('appear'), 2);
-          char.flipX = true;//this is for flipping it to look left instead of right you can make it however you want
-          char.antialiasing = ClientPrefs.globalAntialiasing;
-          add(char);
 	}
 
 	var selectedSomethin:Bool = false;
