@@ -143,8 +143,8 @@ class MainMenuState extends MusicBeatState
 		swith(FlxG.random.int(1, 3))
 		{
       case 1:
-          char = new FlxSprite(820, 170).loadGraphic(Paths.image('character/ayed'));//put your cords and image here
-          char.frames = Paths.getSparrowAtlas('charater/ayed');//here put the name of the xml
+          char = new FlxSprite(820, 170).loadGraphic(Paths.image('characters/ayed'));//put your cords and image here
+          char.frames = Paths.getSparrowAtlas('charaters/ayed');//here put the name of the xml
           char.animation.addByPrefix('idleD', 'ayed idle', 16, true);//on 'idle normal' change it to your xml one
           char.animation.play('idleE');//you can rename the anim however you want to
           char.scrollFactor.set();
