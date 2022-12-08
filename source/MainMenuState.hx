@@ -39,7 +39,7 @@ class MainMenuState extends MusicBeatState
 
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
-	
+	var char:FlxSprite;
 	public static var firstStart:Bool = true;
 
 	public static var nightly:String = "";
@@ -144,9 +144,9 @@ class MainMenuState extends MusicBeatState
 		
 		switch(FlxG.random.int(1, 3))
 	{
-	          case 1:
-                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/ayed'));//put your cords and image here
-                    char.frames = Paths.getSparrowAtlas('mainmenu/ayed');//here put the name of the xml
+           case 1:
+                    char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/Niterhalereal'));//put your cords and image here
+                    char.frames = Paths.getSparrowAtlas('mainmenu/Niterhalereal');//here put the name of the xml
                     char.animation.addByPrefix('idleN', 'idle', 15, true);//on 'idle normal' change it to your xml one
                     char.animation.play('idleN');//you can rename the anim however you want to
                     char.scrollFactor.set();
@@ -252,8 +252,7 @@ class MainMenuState extends MusicBeatState
 				trace("Story Menu Selected");
 			case 'freeplay':
 				FlxG.switchState(new FreeplayState());
-				
-				trace("Freeplay Menu Selected");
+				trace("Freeplay Menu Selected");'
 
 			case 'options':
 				FlxG.switchState(new OptionsMenu());
