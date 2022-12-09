@@ -26,7 +26,7 @@ typedef CharacterMenu = {
 
 class CharMenu extends MusicBeatState
 {
-    var menuItems:Array<String> = ['bf', 'bf-car', 'bf-christmas', 'bf-pixel'];
+    var menuItems:Array<String> = ['bf', 'bf-car', 'bf-christmas', 'ayed', 'bf-pixel'];
     var curSelected:Int = 0;
     var txtDescription:FlxText;
     var shitCharacter:FlxSprite;
@@ -48,6 +48,7 @@ class CharMenu extends MusicBeatState
         "Boyfriend on a Car",
         "Boyfriend in Christmas Clothing",
         "Boyfriend Pixel"
+        "ayed Character"
     ];
 
     var txtOptionTitle:FlxText;
@@ -235,6 +236,9 @@ class CharMenu extends MusicBeatState
                     case "bf-christmas":
                         menuBG.loadGraphic('BG3');
 				        menuBG.color = 0xFF00FF;
+				            case "ayed":
+				                menuBG.loadGraphic('BG5');
+                menuBG.color = 0x00FFFF;
                     case "bf-pixel":
                         menuBG.loadGraphic('BG4');
 				        menuBG.color = 0xFF00FF;
