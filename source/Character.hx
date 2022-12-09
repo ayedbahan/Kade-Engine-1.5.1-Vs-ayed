@@ -500,8 +500,7 @@ class Character extends FlxSprite
 				playAnim('idle');
 			case 'ayed':
 				// yayyy it's me on Kade engine 
-				tex = Paths.getSparrowAtlas('characters/ayed', 'shared');
-				frames = tex;
+				tex = Paths.getSparrowAtlas('characters/ayed');
 				animation.addByPrefix('idle', 'ayed idle', 16, false);
 				animation.addByPrefix('singUP', 'ayed Up', 16, false);
 				animation.addByPrefix('singRIGHT', 'ayed Right', 16, false);
