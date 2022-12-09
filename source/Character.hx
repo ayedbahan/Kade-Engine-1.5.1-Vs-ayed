@@ -197,25 +197,6 @@ class Character extends FlxSprite
 				addOffset("singDOWN", 20, -160);
 
 				playAnim('idle');
-			case 'ayed':
-				// DAD ANIMATION LOADING CODE
-				tex = Paths.getSparrowAtlas('characters/ayed', 'shared');
-				frames = tex;
-				animation.addByPrefix('idle', 'ayed idle', 16);
-				animation.addByPrefix('singUP', 'ayed Up', 16);
-				animation.addByPrefix('singRIGHT', 'ayed Right', 16);
-				animation.addByPrefix('singDOWN', 'ayed Down', 16);
-				animation.addByPrefix('singLEFT', 'ayed Left', 16);
-				animation.addByPrefix('Hey', 'ayed Hey', 16);
-
-				addOffset('idle');
-				addOffset("singUP", -6, 50);
-				addOffset("singRIGHT", 0, 27);
-				addOffset("singLEFT", -10, 10);
-				addOffset("singDOWN", 0, -30);
-				addOffset("Hey", 0, -30);
-
-				playAnim('idle');
 			case 'monster':
 				tex = Paths.getSparrowAtlas('characters/Monster_Assets');
 				frames = tex;
@@ -517,6 +498,21 @@ class Character extends FlxSprite
 				addOffset("singDOWN-alt", -30, -27);
 
 				playAnim('idle');
+			case 'ayed':
+				// yayyy it's me on Kade engine 
+				tex = Paths.getSparrowAtlas('characters/ayed', 'shared');
+				frames = tex;
+				animation.addByPrefix('idle', 'ayed idle', 16, false);
+				animation.addByPrefix('singUP', 'ayed Up', 16, false);
+				animation.addByPrefix('singRIGHT', 'ayed Right', 16, false);
+				animation.addByPrefix('singDOWN', 'ayed Down', 16, false);
+				animation.addByPrefix('singLEFT', 'ayed Left', 16, false);
+
+				addOffset('idle',);
+				addOffset("singUP", 3, 15);
+				addOffset("singRIGHT", 7, 14);
+				addOffset("singLEFT", -9, 10);
+				addOffset("singDOWN", -12, 16);
 		}
 
 		dance();
